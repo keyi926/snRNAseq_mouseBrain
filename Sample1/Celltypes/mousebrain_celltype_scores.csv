@@ -1,0 +1,18 @@
+"cluster","celltype","second_choice","top_score"
+"g0","Inhibitory neurons","Excitatory neurons",1.4105
+"g1","Excitatory neurons","Oligodendrocytes",2.9839
+"g2","Excitatory neurons","Inhibitory neurons",1.9133
+"g3","Oligodendrocytes","Inhibitory neurons",17.4454
+"g4","Excitatory neurons","Oligodendrocytes",0.8954
+"g5","Inhibitory neurons","Excitatory neurons",1.4252
+"g6","Astrocytes","Inhibitory neurons",3.8406
+"g7","Excitatory neurons","Oligodendrocytes",2.9367
+"g8","Excitatory neurons","Oligodendrocytes",2.2352
+"g9","Pericytes","OPC",4.2913
+"g10","Microglia","Oligodendrocytes",3.0367
+"g11","OPC","Inhibitory neurons",4.2483
+"g12","Endothelial","Pericytes",3.6156
+"g13","Inhibitory neurons","Excitatory neurons",1.5509
+"g14","Choroid plexus","Ependymal",17.9616
+"g15","Excitatory neurons","Choroid plexus",0.7157
+"g16","Ependymal","Astrocytes",1.0991
