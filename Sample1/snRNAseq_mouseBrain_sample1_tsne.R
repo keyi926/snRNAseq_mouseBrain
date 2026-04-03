@@ -6,7 +6,7 @@ library(svglite)
 
 #### Setup the Seurat Object####
 # Load the mousebrain dataset
-setwd("/Users/keyi/Documents/1_Data/single_cell_Sequencing/Single_cell_seq/R/Sample2")
+setwd("/Users/keyi/Documents/1_Data/single_cell_Sequencing/Single_cell_seq/R/Sample1")
 mousebrain.data <- Read10X_h5("filtered_feature_bc_matrix.h5")
 
 ###############################################################
@@ -97,8 +97,8 @@ saveRDS(mousebrain.markers, file = "mousebrain_markers.rds")
 ###############################################################
 ################### start from .rds############################
 ###############################################################
-mousebrain <- readRDS("/Users/keyi/Documents/1_Data/single_cell_Sequencing/Single_cell_seq/R/Sample2/mousebrain_tsne.rds")
-mousebrain.markers <- readRDS("/Users/keyi/Documents/1_Data/single_cell_Sequencing/Single_cell_seq/R/Sample2/mousebrain_markers.rds")
+mousebrain <- readRDS("/Users/keyi/Documents/1_Data/single_cell_Sequencing/Single_cell_seq/snRNAseq_mouseBrain/rds/sample1/mousebrain_tsne.rds")
+mousebrain.markers <- readRDS("/Users/keyi/Documents/1_Data/single_cell_Sequencing/Single_cell_seq/snRNAseq_mouseBrain/rds/sample1/mousebrain_markers.rds")
 
 ###############################################################
 ###############################################################
@@ -338,7 +338,9 @@ gene_list <- c(
   "Syn1","Rbfox3","Ptprc","Tubb3","Map2","Dcx","Syp",
   "Dlg4","Camk2a","Atf3","Fos","Jun","Bax","Egr1",
   "Casp3","P2ry12","Il1b","Tnf","Ccl2","Ifit3","Isg15",
-  "Tmem119","Aldh1l1","C3","Serping1","Slc1a2"
+  "Tmem119","Aldh1l1","C3","Serping1","Slc1a2",
+  "Slc1a3","Gja1","Sox9","Aqp4","Sox9","Aqp4",
+  "Lcn2","Clu"
 )
 
 # 
