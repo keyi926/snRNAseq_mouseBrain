@@ -23,7 +23,7 @@ Sample2 (AD + ALNP) - Sample1 (untreated AD)
 10x filtered_feature_bc_matrix.h5
         |
         +-- Per-sample analysis (Sample1 / Sample2)
-        |   QC -> LogNormalize -> HVG -> ScaleData -> PCA
+        |   QC -> per-library scDblFinder -> LogNormalize -> HVG -> ScaleData -> PCA
         |   -> clustering -> t-SNE -> markers -> cell-type/region annotation
         |
         +-- Two-sample integration (Integration)
@@ -31,6 +31,8 @@ Sample2 (AD + ALNP) - Sample1 (untreated AD)
             -> cell-type DEG -> GO -> microglia -> genes of interest
             -> expression/QC export -> BBB transcriptional assessment
 ```
+
+In the main integration workflow, `scDblFinder` is run independently on each physical 10x library before merging. Using seed `20260728` and an expected 10x multiplet rate of approximately 1% per 1,000 recovered nuclei, 287/4,309 nuclei in Sample1 and 283/4,305 nuclei in Sample2 were flagged and excluded; 4,022 predicted singlets from each library entered the Seurat integration workflow.
 
 ## 3. Repository layout
 
@@ -45,6 +47,7 @@ snRNAseq_mouseBrain/
 
 └── Integration/
     ├── snRNAseq_mouseBrain_integration.R
+    ├── scDblFinder_doublet_detection.R
     ├── snRNAseq_mouseBrain_integration_downstream.R
     ├── expression_qc_dotplot.R
     ├── gene_of_interest_per_sample.R
@@ -61,6 +64,7 @@ Raw inputs and all generated analysis outputs are local artifacts and are exclud
 | `Sample1/snRNAseq_mouseBrain_sample1_tsne.R` | Sample1 QC, clustering, annotation, and expression export | Sample1 10x H5 | Sample1 result directories |
 | `Sample2/snRNAseq_mouseBrain_sample 2_tsne.R` | Equivalent Sample2 workflow | Sample2 10x H5 | Sample2 result directories |
 | `Integration/snRNAseq_mouseBrain_integration.R` | CCA integration and principal analyses from the two H5 files | Two 10x H5 files | Integrated objects, t-SNE, DEG, GO, and microglia results |
+| `Integration/scDblFinder_doublet_detection.R` | Per-library doublet calling used by the main integration script | Individual 10x count matrices | Singlet barcodes, doublet calls, and per-library counts |
 | `Integration/snRNAseq_mouseBrain_integration_downstream.R` | Resume downstream analyses from an integrated object | `mousebrain_integrated.rds` | DEG, GO, microglia, and composition |
 | `Integration/expression_qc_dotplot.R` | Expression matrices, QC summaries, and dot plots | Final integrated object | CSV/XLSX tables and figures |
 | `Integration/gene_of_interest_per_sample.R` | Sample-level genes-of-interest comparison | Final integrated object | Wilcoxon results and SVG figures |
@@ -74,6 +78,7 @@ The project has been run with:
 
 - R 4.3.3
 - Seurat 5.2.1
+- scDblFinder 1.16.0
 
 Core R packages:
 
@@ -87,6 +92,11 @@ patchwork
 svglite
 Matrix
 openxlsx
+scDblFinder
+SingleCellExperiment
+scater
+scuttle
+BiocSingular
 ```
 
 GO enrichment additionally requires:

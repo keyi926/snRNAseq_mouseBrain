@@ -29,6 +29,7 @@ script_dir <- if (length(script_arg)) {
 }
 root <- normalizePath(file.path(script_dir, ".."))
 setwd(script_dir)
+source(file.path(script_dir, "scDblFinder_doublet_detection.R"))
 
 h5_s1 <- file.path(root, "Sample1", "filtered_feature_bc_matrix.h5")
 h5_s2 <- file.path(root, "Sample2", "filtered_feature_bc_matrix.h5")
@@ -42,10 +43,30 @@ dir.create("Microglia", showWarnings = FALSE, recursive = TRUE)
 palette_DotPlot <- c("#4589C6", "white", "#CE544D")
 
 # ============================================================
-# 1) Load each sample, tag with metadata, merge
+# 1) Load each sample and remove predicted doublets independently
 # ============================================================
 s1.data <- Read10X_h5(h5_s1)
 s2.data <- Read10X_h5(h5_s2)
+
+# Doublets are called separately for each physical 10x library before merging.
+# The raw count matrices are retained on disk; only predicted singlets enter
+# normalization, integration, clustering, and downstream analyses.
+dbl_s1 <- run_scdblfinder(s1.data, library_id = "Sample1")
+dbl_s2 <- run_scdblfinder(s2.data, library_id = "Sample2")
+
+write.csv(
+  rbind(dbl_s1$summary, dbl_s2$summary),
+  "QC/scDblFinder_summary.csv",
+  row.names = FALSE
+)
+write.csv(
+  rbind(dbl_s1$calls, dbl_s2$calls),
+  "QC/scDblFinder_calls.csv",
+  row.names = FALSE
+)
+
+s1.data <- s1.data[, dbl_s1$singlet_barcodes, drop = FALSE]
+s2.data <- s2.data[, dbl_s2$singlet_barcodes, drop = FALSE]
 
 s1 <- CreateSeuratObject(counts = s1.data, project = "Sample1",
                          min.cells = 3, min.features = 200)
@@ -54,6 +75,7 @@ s2 <- CreateSeuratObject(counts = s2.data, project = "Sample2",
 s1$sample <- "Sample1"
 s2$sample <- "Sample2"
 
+# Merge the retained singlets and continue with the standard Seurat workflow.
 mb <- merge(s1, y = s2, add.cell.ids = c("S1", "S2"),
             project = "mousebrain_integrated")
 
