@@ -1,0 +1,21 @@
+"sample","celltype","n","frac"
+"Sample1","Astrocytes",282,0.0654444186586215
+"Sample1","Choroid plexus",44,0.0102111858899977
+"Sample1","Endothelial",57,0.0132281271756788
+"Sample1","Ependymal",21,0.00487352053840798
+"Sample1","Excitatory neurons",1786,0.414481318171269
+"Sample1","Inhibitory neurons",1542,0.3578556509631
+"Sample1","Microglia",84,0.0194940821536319
+"Sample1","OPC",86,0.0199582269668136
+"Sample1","Oligodendrocytes",361,0.0837781387792991
+"Sample1","Pericytes",46,0.0106753307031794
+"Sample2","Astrocytes",305,0.0708478513356562
+"Sample2","Choroid plexus",27,0.00627177700348432
+"Sample2","Endothelial",93,0.021602787456446
+"Sample2","Ependymal",11,0.00255516840882695
+"Sample2","Excitatory neurons",2414,0.560743321718931
+"Sample2","Inhibitory neurons",773,0.179558652729384
+"Sample2","Microglia",113,0.0262485481997677
+"Sample2","OPC",116,0.026945412311266
+"Sample2","Oligodendrocytes",408,0.0947735191637631
+"Sample2","Pericytes",45,0.0104529616724739

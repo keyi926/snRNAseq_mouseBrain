@@ -1,0 +1,5 @@
+"module","genes","mean_S1","mean_S2","delta_S2_minus_S1","wilcox_p_celllevel"
+"TightJunction","Cldn5,Ocln,Tjp1,Jam2,Cgn,Esam",0.0436,0.2371,0.1935,0.00387
+"Transporter","Slc2a1,Abcb1a,Abcg2,Slco1a4,Mfsd2a",0.8837,1.0823,0.1986,0.118
+"Leak","Plvap,Cav1",0.0926,0.0145,-0.0782,0.392
+"EndoActivation","Vcam1,Icam1,Vwf,Angpt2",0.0685,-0.004,-0.0725,0.303

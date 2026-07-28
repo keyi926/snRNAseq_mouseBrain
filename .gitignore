@@ -1,1 +1,51 @@
+# R session state and serialized objects
+.Rhistory
+.RData
 .RDataTmp
+.Rproj.user/
+*.rds
+*.RDS
+
+# Generated HTML reports
+*.html
+*.HTML
+
+# Raw 10x input matrices
+*.h5
+*.H5
+
+# Generated figures and image files
+*.svg
+*.SVG
+*.png
+*.PNG
+*.jpg
+*.JPG
+*.jpeg
+*.JPEG
+*.tif
+*.TIF
+*.tiff
+*.TIFF
+*.gif
+*.GIF
+*.bmp
+*.BMP
+*.webp
+*.WEBP
+*.eps
+*.EPS
+
+# Local logs, backups, AI/chat exports, and transient reports
+*.log
+*.log.*
+*.bak.*
+conversation_backup_*
+*ai_conversation*
+*chat_history*
+*.jsonl
+_archive*/
+Rplots.pdf
+
+# macOS metadata
+.DS_Store
