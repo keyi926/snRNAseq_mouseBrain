@@ -14,6 +14,15 @@
 *.h5
 *.H5
 
+# Generated tables and analysis summaries
+*.csv
+*.CSV
+*.xlsx
+*.XLSX
+*.txt
+*.TXT
+Integration/**/*.md
+
 # Generated figures and image files
 *.svg
 *.SVG
