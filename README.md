@@ -17,10 +17,6 @@ The primary comparison is:
 Sample2 (AD + ALNP) - Sample1 (untreated AD)
 ```
 
-A positive `avg_log2FC` or an `Up` label therefore means higher expression in `Sample2`. A negative value or a `Down` label means lower expression in `Sample2`.
-
-The samples differ in `Xist` expression, suggesting that sex may be a potential confounder. The Fig.3-style presentation was inspired by the 2025 *Nature* paper “Lithium deficiency and the onset of Alzheimer's disease,” but this dataset and study design must be interpreted independently.
-
 ## 2. Workflow
 
 ```text
@@ -55,39 +51,17 @@ snRNAseq_mouseBrain/
 ├── README.md
 ├── .gitignore
 ├── Sample1/
-│   ├── filtered_feature_bc_matrix.h5
-│   ├── snRNAseq_mouseBrain_sample1_tsne.R
-│   ├── QC/
-│   ├── Celltypes/
-│   ├── Regions/
-│   ├── Gene_of_Interest/
-│   └── Gene_expression/
+│   └── snRNAseq_mouseBrain_sample1_tsne.R
 ├── Sample2/
-│   ├── filtered_feature_bc_matrix.h5
-│   ├── snRNAseq_mouseBrain_sample 2_tsne.R
-│   ├── QC/
-│   ├── Celltypes/
-│   ├── Regions/
-│   ├── Gene_of_Interest/
-│   └── Gene_expression/
+│   └── snRNAseq_mouseBrain_sample 2_tsne.R
+
 └── Integration/
     ├── snRNAseq_mouseBrain_integration.R
     ├── snRNAseq_mouseBrain_integration_downstream.R
     ├── expression_qc_dotplot.R
     ├── gene_of_interest_per_sample.R
     ├── gene_of_interest_per_celltype.R
-    ├── snRNAseq_mouseBrain_BBB_integrity.R
-    ├── BBB/
-    ├── Celltypes/
-    ├── DEG/
-    ├── DotPlot/
-    ├── GO/
-    ├── Gene_expression/
-    ├── Gene_of_Interest/
-    ├── Gene_of_Interest_byCellType/
-    ├── Microglia/
-    ├── QC/
-    └── TSNE/
+    └── snRNAseq_mouseBrain_BBB_integrity.R
 ```
 
 Raw inputs and all generated analysis outputs are local artifacts and are excluded from Git. The repository contains source code, repository configuration, and this README only.
