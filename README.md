@@ -32,18 +32,6 @@ Sample2 (AD + ALNP) - Sample1 (untreated AD)
             -> expression/QC export -> BBB transcriptional assessment
 ```
 
-Principal per-sample settings:
-
-- `CreateSeuratObject(min.cells = 3, min.features = 200)`
-- `LogNormalize(scale.factor = 10000)`
-- `FindVariableFeatures(selection.method = "vst", nfeatures = 2000)`
-- PCA and neighbor graph: `dims = 1:10`
-- `FindClusters(resolution = 0.5)`
-- t-SNE for two-dimensional visualization
-- Cluster-level marker-panel scores for cell-type and brain-region annotation
-
-The integration workflow uses Seurat v5 `IntegrateLayers(method = CCAIntegration)` and clusters cells in the `integrated.cca` reduction.
-
 ## 3. Repository layout
 
 ```text
@@ -109,51 +97,3 @@ org.Mm.eg.db
 ```
 
 The repository does not currently contain an `renv.lock` file, so the complete package environment is not locked.
-
-
-## 6. Integrated dataset summary
-
-The integrated object contains 8,614 nuclei:
-
-| Cell type | Sample1 | Sample2 |
-| --- | ---: | ---: |
-| Excitatory neurons | 1,786 | 2,414 |
-| Inhibitory neurons | 1,542 | 773 |
-| Astrocytes | 282 | 305 |
-| Oligodendrocytes | 361 | 408 |
-| OPC | 86 | 116 |
-| Microglia | 84 | 113 |
-| Endothelial | 57 | 93 |
-| Pericytes | 46 | 45 |
-| Choroid plexus | 44 | 27 |
-| Ependymal | 21 | 11 |
-| **Total** | **4,309** | **4,305** |
-
-The neuronal subtype proportions differ substantially between the samples. With one sample per condition, this difference may reflect treatment, individual variation, sampling, or technical composition.
-
-## 7. BBB integrity analysis
-
-`Integration/snRNAseq_mouseBrain_BBB_integrity.R` evaluates endothelial, pericyte, and astrocyte-endfoot transcriptional features:
-
-- Tight-junction and transporter modules are directionally higher in `Sample2`.
-- Endothelial activation and leak/transcytosis modules are directionally lower in `Sample2`.
-- Pericyte and `Ptprc`-positive fractions do not show an evident increase.
-
-These observations provide descriptive evidence that no strong BBB transcriptional injury signal was detected. They do not establish physical barrier integrity and cannot replace tracer leakage, IgG/fibrinogen extravasation, TEER, or independent animal replication. Detailed BBB reports and tables are generated and retained locally.
-
-
-## 8. Git data policy
-
-The repository retains only:
-
-- R analysis source code;
-- the root English README;
-- Git configuration files.
-
-The repository excludes all raw data and generated artifacts, including:
-
-- H5 inputs, CSV/XLSX tables, TXT summaries, serialized R objects, and HTML reports;
-- SVG and raster figures;
-- analysis-specific Markdown reports;
-- AI/chat conversation exports;
-- `.RData`, `.Rhistory`, logs, temporary files, local backups, and macOS metadata.
